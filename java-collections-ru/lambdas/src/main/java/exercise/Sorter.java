@@ -1,5 +1,6 @@
 package exercise;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,10 +16,9 @@ public class Sorter {
         Predicate<Map<String, String>> onlyMans = person -> person.get("gender").equals("male");
         Function<Map<String, String>, String> shortName = person -> person.get("name");
 
-        List<Map<String, String>> people = new ArrayList<>(users);
-        people.sort(Comparator.comparing(p -> LocalDateTime.parse(p.get("birthday")+"T00:00:00")));
-        return people.stream()
+        return users.stream()
                 .filter(onlyMans)
+                .sorted(Comparator.comparing(p -> LocalDate.parse(p.get("birthday")).toEpochDay()))
                 .map(shortName)
                 .collect(Collectors.toList());
     }
