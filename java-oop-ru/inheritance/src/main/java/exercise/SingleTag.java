@@ -10,10 +10,15 @@ public class SingleTag extends Tag {
     }
 
     @Override
-    public String toString() {
-        var result = attributes.entrySet().stream()
+    public String stringifyAttributes() {
+        return attributes.entrySet().stream()
                 .map(k -> k.getKey() + "=\"" + k.getValue() + "\"")
                 .collect(Collectors.joining(" "));
+    }
+
+    @Override
+    public String toString() {
+        var result = stringifyAttributes();
         var suffix = result.isEmpty() ? "" : " " + result;
         return "<" + name + suffix + ">";
     }

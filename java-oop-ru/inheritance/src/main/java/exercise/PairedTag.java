@@ -15,7 +15,8 @@ public class PairedTag extends Tag{
         this.listTag = listTag;
     }
 
-    public String toString() {
+    @Override
+    public String stringifyAttributes() {
         StringBuilder result = new StringBuilder(attributes.entrySet().stream()
                 .map(k -> k.getKey() + "=\"" + k.getValue() + "\"")
                 .collect(Collectors.joining(" ")));
@@ -24,9 +25,13 @@ public class PairedTag extends Tag{
         for (Tag tag : listTag) {
             result.append(tag.toString());
         }
-        result.append(body);
-        result.append("</").append(name).append(">");
-        return result.toString();
+        return String.valueOf(result);
+    }
+    public String toString() {
+        var result = stringifyAttributes();
+        result += body;
+        result += "</" + name + ">";
+        return result;
     }
 }
 // END
