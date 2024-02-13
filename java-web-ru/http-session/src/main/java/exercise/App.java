@@ -16,7 +16,7 @@ public final class App {
         app.get("/users", ctx -> {
             var page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
             var per = ctx.queryParamAsClass("per", Integer.class).getOrDefault(5);
-            ctx.json(USERS.subList((page - 1) * per, page * per - 1));
+            ctx.json(USERS.subList((page - 1) * per, page * per));
         });
         // END
         return app;
