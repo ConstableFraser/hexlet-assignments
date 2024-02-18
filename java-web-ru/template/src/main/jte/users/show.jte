@@ -1,4 +1,4 @@
-@import java.exercise.dto.users.UserPage
+@import exercise.dto.users.UserPage
 @param UserPage user
 
 <html>
