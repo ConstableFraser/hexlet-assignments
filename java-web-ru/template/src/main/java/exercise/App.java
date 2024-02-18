@@ -21,9 +21,9 @@ public final class App {
 
         // BEGIN
         app.get("/users/{id}", ctx -> {
-            var id = String.valueOf(ctx.pathParamAsClass("id", Long.class));
+            var id = ctx.pathParamAsClass("id", Long.class);
             var user = USERS.stream()
-                    .filter((u) -> (Objects.equals(Long.valueOf(id), u.getId())))
+                    .filter(u -> (Objects.equals(id.get(), u.getId())))
                     .findFirst()
                     .orElseThrow(() -> new NotFoundResponse("User not found"));
             var page = new UserPage(user);
