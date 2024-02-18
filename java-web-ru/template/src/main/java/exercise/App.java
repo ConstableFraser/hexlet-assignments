@@ -20,7 +20,7 @@ public final class App {
         var app = Javalin.create(config -> config.plugins.enableDevLogging());
 
         // BEGIN
-        app.get("/user/{id}", ctx -> {
+        app.get("/users/{id}", ctx -> {
             var id = String.valueOf(ctx.pathParamAsClass("id", Long.class));
             var user = USERS.stream()
                     .filter((u) -> (Objects.equals(Long.valueOf(id), u.getId())))
