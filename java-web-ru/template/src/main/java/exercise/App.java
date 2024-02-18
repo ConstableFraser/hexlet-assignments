@@ -27,12 +27,12 @@ public final class App {
                     .findFirst()
                     .orElseThrow(() -> new NotFoundResponse("User not found"));
             var page = new UserPage(user);
-            ctx.render("/users/show.jte", Collections.singletonMap("page", page));
+            ctx.render("users/show.jte", Collections.singletonMap("page", page));
         });
 
         app.get("/users", ctx -> {
             var users = new UsersPage(USERS);
-            ctx.render("/users/index.jte", Collections.singletonMap("users", users));
+            ctx.render("users/index.jte", Collections.singletonMap("users", users));
         });
         // END
 
