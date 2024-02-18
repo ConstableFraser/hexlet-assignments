@@ -27,7 +27,7 @@ public final class App {
                     .findFirst()
                     .orElseThrow(() -> new NotFoundResponse("User not found"));
             var page = new UserPage(user);
-            ctx.render("users/show.jte", Collections.singletonMap("page", page));
+            ctx.render("users/show.jte", Collections.singletonMap("user", page));
         });
 
         app.get("/users", ctx -> {
