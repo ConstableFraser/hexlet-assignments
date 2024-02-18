@@ -6,7 +6,7 @@
         <title>User</title>
     </head>
     <body>
-        <h1>${user}</h1>
+        <h1>${user.toString()}</h1>
         <p><b>ID: </b> ${user.getId()}</p> <br>
         <p><b>first name: </b> ${user.getFirstName()}</p> <br>
         <p><b>last name: </b> ${user.getLastName()}</p> <br>
