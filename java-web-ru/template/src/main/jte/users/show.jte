@@ -1,4 +1,4 @@
-@import org.example.hexlet.dto.users.UserPage
+@import java.exercise.dto.users.UserPage
 @param UserPage user
 
 <html>
