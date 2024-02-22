@@ -26,7 +26,7 @@ public final class App {
         app.get("/users", ctx -> {
            var term = ctx.queryParam("term");
            var users = USERS.stream()
-                   .filter(u -> u.getFirstName().startsWith(term == null ? "" : term))
+                   .filter(u -> u.getFirstName().toLowerCase().startsWith(term == null ? "" : term.toLowerCase()))
                    .sorted(Comparator.comparingInt(u -> (int) u.getId()))
                    .toList();
            var page = new UsersPage(users.isEmpty() ? List.of() : users, term);
