@@ -39,8 +39,8 @@ public final class App {
             var password = ctx.formParam("password");
 
             var user = new User(
-                    StringUtils.upperCase(firstName),
-                    StringUtils.upperCase(lastName),
+                    StringUtils.capitalize(firstName),
+                    StringUtils.capitalize(lastName),
                     StringUtils.trim(StringUtils.lowerCase(email)),
                     Security.encrypt(password != null ? password : "")
             );
