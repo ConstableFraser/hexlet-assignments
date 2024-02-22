@@ -33,8 +33,8 @@ public final class App {
         });
 
         app.post("/users", ctx -> {
-            var firstName = ctx.formParam("firstname");
-            var lastName = ctx.formParam("lastname");
+            var firstName = ctx.formParam("firstName");
+            var lastName = ctx.formParam("lastName");
             var email = ctx.formParam("email");
             var password = ctx.formParam("password");
 

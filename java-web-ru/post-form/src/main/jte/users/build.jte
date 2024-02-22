@@ -5,13 +5,13 @@
           <div>
             <label>
               firstName
-              <input type="text" name="firstname" />
+              <input type="text" required name="firstName" />
             </label>
           </div>
           <div>
             <label>
               lastName
-              <input type="text" required name="lastname" />
+              <input type="text" required name="lastName" />
             </label>
           </div>
           <div>
