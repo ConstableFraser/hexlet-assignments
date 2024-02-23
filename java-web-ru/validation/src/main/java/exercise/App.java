@@ -40,7 +40,7 @@ public final class App {
                         .check(s -> s.length() >= 10, "Статья должна быть не короче 10 символов")
                         .get();
                 title = ctx.formParamAsClass("title", String.class)
-                        .check(s -> s.length() >= 2, "Навание не должно быть короче 2 символов")
+                        .check(s -> s.length() >= 2, "Навание не должно быть короче двух символов")
                         .check(s -> !ArticleRepository.existsByTitle(s), "Статья с таким названием уже существует")
                         .get();
                 var article = new Article(title, content);
