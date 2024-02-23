@@ -1,6 +1,7 @@
 package exercise;
 
 import io.javalin.Javalin;
+// import io.javalin.http.HttpStatus;
 import io.javalin.validation.ValidationException;
 import java.util.List;
 import exercise.model.Article;
@@ -47,6 +48,7 @@ public final class App {
                 ctx.redirect("/articles");
             } catch (ValidationException e) {
                 var page = new BuildArticlePage(title, content, e.getErrors());
+                ctx.status(422);
                 ctx.render("articles/build.jte", Collections.singletonMap("page", page));
             }
         });
