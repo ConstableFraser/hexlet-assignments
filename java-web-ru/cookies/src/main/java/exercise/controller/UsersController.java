@@ -8,12 +8,13 @@ import java.util.Objects;
 
 import exercise.repository.UserRepository;
 import io.javalin.http.Context;
+import io.javalin.http.NotFoundResponse;
 
 
 public class UsersController {
 
     public static void build(Context ctx) {
-        ctx.render("users/build.jte");
+        ctx.render("users/build.jte").status(200);
     }
 
     // BEGIN
@@ -26,15 +27,15 @@ public class UsersController {
         var token = Security.generateToken();
 
         var user = new User(firstName, lastName, email, encryptedPassword, token);
-        UserRepository.save(user);
+        var id = UserRepository.save(user);
 
-        var id = UserRepository.search(firstName);
-        ctx.redirect(NamedRoutes.userPath(String.valueOf(id)));
+        ctx.redirect(NamedRoutes.userPath(id));
     }
 
     public static void show(Context ctx) {
-        var id = ctx.pathParamAsClass("id", Long.class);
-        var user = UserRepository.find(id.get()).get();
+        var id = ctx.pathParamAsClass("id", Long.class).get();
+        var user = UserRepository.find(id)
+                .orElseThrow(() -> new NotFoundResponse("User with id = " + id + " not found"));
         var tokenUser = String.valueOf(user.getToken());
 
         if (Objects.equals(tokenUser, ctx.cookie("token"))) {

@@ -9,9 +9,11 @@ import exercise.model.User;
 public class UserRepository {
     private static List<User> entities = new ArrayList<User>();
 
-    public static void save(User user) {
-        user.setId((long) entities.size() + 1);
+    public static Long save(User user) {
+        Long id = (long) (entities.size() + 1);
+        user.setId(id);
         entities.add(user);
+        return id;
     }
 
     public static List<User> search(String term) {
