@@ -12,7 +12,7 @@ import io.javalin.http.Context;
 
 public class UsersController {
 
-    public static void build(Context ctx){
+    public static void build(Context ctx) {
         ctx.render("users/build.jte");
     }
 

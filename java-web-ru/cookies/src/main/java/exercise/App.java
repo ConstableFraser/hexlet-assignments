@@ -13,6 +13,7 @@ public final class App {
         });
 
         // BEGIN
+        app.post(NamedRoutes.buildUserPath(), UsersController::build);
         app.post(NamedRoutes.usersPath(), UsersController::register);
         app.get(NamedRoutes.userPath("{id}"), UsersController::show);
         // END
