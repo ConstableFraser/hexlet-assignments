@@ -29,6 +29,7 @@ public class UsersController {
         var user = new User(firstName, lastName, email, encryptedPassword, token);
         var id = UserRepository.save(user);
 
+        ctx.cookie("token", token);
         ctx.redirect(NamedRoutes.userPath(id));
     }
 
@@ -39,9 +40,10 @@ public class UsersController {
         var tokenUser = String.valueOf(user.getToken());
 
         if (Objects.equals(tokenUser, ctx.cookie("token"))) {
-            ctx.render("users/show.jte", Collections.singletonMap("page", user));
+            ctx.render("users/show.jte", Collections.singletonMap("user", user));
+        } else {
+            ctx.redirect(NamedRoutes.buildUserPath());
         }
-        ctx.redirect(NamedRoutes.buildUserPath());
     }
     // END
 }
