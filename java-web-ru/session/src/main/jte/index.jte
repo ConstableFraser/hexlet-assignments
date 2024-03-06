@@ -9,7 +9,7 @@ content = @`
             ${String.valueOf(page.getName())}<br>
             <div class="mx-auto p-4 py-md-5">
                 <form action="${NamedRoutes.logoutPath()}" method="post">
-                    <input type="submit" class="btn btn-primary" value="Sign out" />
+                    <input type="submit" class="btn btn-primary" value="Выйти" />
                 </form>
             </div>
         </div>
