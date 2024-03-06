@@ -15,7 +15,7 @@ content = @`
         </div>
     @else
         <div class="mb-3 p-2">
-        <a href="${NamedRoutes.buildSessionPath()}">Sign in</a>
+        <a href="${NamedRoutes.buildSessionPath()}">Войти</a>
         </div>
     @endif
 `
